@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-base text-textP font-body antialiased;
+  }
+  ::selection {
+    @apply bg-accent text-white;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-base;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-borderB rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent;
+  }
+}
+
+/* Scroll indicator child pseudo-element - hard to do in Tailwind */
+.scroll-dot::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: #7c6af7;
+  border-radius: 99px;
+  animation: scrollDot 1.8s infinite;
+}
+
+/* Skill bar width is dynamic, set via inline style */
+/* Timeline item dash */
+.timeline-dash::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #7c6af7;
+  font-size: 0.75rem;
+}
